@@ -1,0 +1,27 @@
+{
+  "query": "query{\n  creditMemos(\n    filter: {\n    creditMemoDate: null\n    creditMemoStatus: null\n    filterAccountId: null\n    filterUserId: null\n    locale: \"en_US\"\n    searchText: null\n  # \"Sample\"\n    userUuid: \"uuidUser\"\n    accountUuid: \"uuidCompany\"\n    scope: \"MARKETPLACE\"\n    tenant: \"CREDITMEMODOCBUILDER\"\n  }\n  orderBy: {\n    field:  CREATION_DATE,\n      direction: DESC\n  }\n# filter:{\n  #     totalCount: {in:[2]}\n  # }\n  first: 3\n  after: null\n  last: null\n  before: null){\n    totalCount\n    pageInfo{\n      startCursor\n      endCursor\n      hasPreviousPage\n      hasNextPage\n    }\n    nodes\n    {\n      id\n      amountAvailable\n      amountUsed\n      creditMemoAppliedDate\n      creditMemoCreationDate\n      creditMemoNumber\n      currency\n      initialStatus\n      tenant\n      status\n      subTotal\n      taxDetails{\n      taxAmount\n      taxType{\n        id\n        name\n        rate\n        strategy\n      }\n      taxableAmount\n    }\n      total\n      totalTax\n      seller{\n      invoiceLogoUrl\n      invoiceMemo\n      invoiceText\n      merchantOfRecord{\n      ... on CreditMemoParty {\n          user{\n            current{\n              id\n            }\n          }\n        }\n      ... on CreditMemoMarketplace {\n          name\n        }\n      }\n    }\n      customer{\n      account{\n        current{\n          id\n        }\n        recorded{\n          name\n        }\n      }\n      user{\n        current{\n          id\n        }\n        recorded{\n          email\n          firstName\n          lastName\n          addresses{\n            type\n              address{\n              city\n              country\n              postalCode\n              region\n              streetLine1\n              streetLine2\n            }\n          }\n        }\n      }\n    }\n      creditMemoLines{\n      id\n      buyer{\n        account{\n          current{\n            id\n          }\n          recorded{\n            name\n          }\n        }\n        user{\n          current{\n            id\n          }\n          recorded{\n            email\n            firstName\n            lastName\n            addresses{\n              type\n                address{\n                city\n                country\n                postalCode\n                region\n                streetLine1\n                streetLine2\n              }\n            }\n          }\n        }\n      }\n      cost{\n        credit\n        percentage\n        strategy\n        type{\n          recorded{\n            description\n            feeLabel\n            type\n          }\n        }\n        typeCategory\n        unit{\n          recorded{\n            allowDecimals\n            feeLabel\n            unitLabel\n            unitsLabel\n          }\n        }\n      }\n      costPeriod{\n        recorded{\n          feeLabel\n          periodLabel\n          periodsLabel\n          unit\n          unitValue\n        }\n      }\n      description\n      discount{\n        recorded{\n          code\n          description\n          type\n            unit{\n            maximum\n            minimum\n            unitName\n          }\n          value\n        }\n      }\n      edition{\n        current{\n          id\n          version\n        }\n        recorded{\n          name\n        }\n      }\n      orderLineId\n      period{\n        end\n        start\n      }\n      pricingPlan{\n        current{\n          id\n        }\n        recorded{\n          period\n        }\n      }\n      product{\n        current{\n          id\n          version\n          \n        }\n        recorded{\n          name\n        }\n      }\n      provider{\n        account{\n          current{\n            id\n          }\n          recorded{\n            name\n          }\n        }\n        user{\n          current{\n            id\n          }\n          recorded{\n            email\n            firstName\n            lastName\n            addresses{\n              type\n                address{\n                city\n                country\n                postalCode\n                region\n                streetLine1\n                streetLine2\n              }\n            }\n          }\n        }\n      }\n      quantity\n      subscription{\n        current{\n          id\n        }\n      }\n      total\n      type\n        unitPrice\n    }\n    }\n  }\n}",
+  "variables": {
+    "orderBy": [
+      {
+        "field": "CREATION_DATE",
+        "direction": "DESC"
+      },
+      {
+        "field": "MEMO",
+        "direction": "ASC"
+      }
+    ],
+    "filter": {
+      "creditMemoStatus": null,
+      "creditMemoDate": null,
+      "searchText": "",
+      "scope": "MARKETPLACE",
+      "tenant": "CREDITMEMODOCBUILDER",
+      "locale": "en"
+    },
+    "first": 10,
+    "after": null,
+    "last": null,
+    "before": null
+  }
+}

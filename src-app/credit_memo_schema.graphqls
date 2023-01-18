@@ -1,0 +1,398 @@
+#---------- Queries----------------
+type Query @public(name: "credit-memo"){
+  #   returns Credit Memo details for given id and locale
+  creditMemo(id: ID!, locale: String): CreditMemo!
+  #   returns paginated Credit Memos list
+  creditMemos(
+    filter: CreditMemoFilter,
+    orderBy: [CreditMemoOrderBy]
+    first: Int ,
+    after: String,
+    last: Int,
+    before: String): CreditMemoConnection!
+}
+
+type Account @key(fields: "id") @public(name: "credit-memo") {
+  id: ID!
+  creditMemos(
+    filter: CreditMemoFilter,
+    orderBy:[CreditMemoOrderBy]
+    first: Int ,
+    after: String,
+    last: Int,
+    before: String): CreditMemoAccountConnection!
+}
+
+type AccountMembership @key(fields: "user { id } account { id }") @public(name: "credit-memo"){
+  user: User!
+  account: Account!
+  creditMemos(
+    filter: CreditMemoFilter,
+    orderBy: [CreditMemoOrderBy]
+    first: Int ,
+    after: String,
+    last: Int,
+    before: String): CreditMemoAccountMembershipConnection!
+}
+
+type Account @key(fields: "id") @public(name: "credit-memo") {
+  id: ID!
+  creditMemos(
+    filter: CreditMemoFilter,
+    orderBy:[CreditMemoOrderBy]
+    first: Int ,
+    after: String,
+    last: Int,
+    before: String): CreditMemoAccountConnection!
+}
+
+type AccountMembership @key(fields: "user { id } account { id }") @public(name: "credit-memo"){
+  user: User!
+  account: Account!
+  creditMemos(
+    filter: CreditMemoFilter,
+    orderBy: [CreditMemoOrderBy]
+    first: Int ,
+    after: String,
+    last: Int,
+    before: String): CreditMemoAccountMembershipConnection!
+}
+
+type Account @key(fields: "id") @public(name: "credit-memo") {
+  id: ID!
+  creditMemos(
+    filter: CreditMemoFilter,
+    orderBy:[CreditMemoOrderBy]
+    first: Int ,
+    after: String,
+    last: Int,
+    before: String): CreditMemoAccountConnection!
+}
+
+type AccountMembership @key(fields: "user { id } account { id }") @public(name: "credit-memo"){
+  user: User!
+  account: Account!
+  creditMemos(
+    filter: CreditMemoFilter,
+    orderBy: [CreditMemoOrderBy]
+    first: Int ,
+    after: String,
+    last: Int,
+    before: String): CreditMemoAccountMembershipConnection!
+}
+
+type Account @key(fields: "id") @public(name: "credit-memo") {
+  id: ID!
+  creditMemos(
+    filter: CreditMemoFilter,
+    orderBy:[CreditMemoOrderBy]
+    first: Int ,
+    after: String,
+    last: Int,
+    before: String): CreditMemoAccountConnection!
+}
+
+type AccountMembership @key(fields: "user { id } account { id }") @public(name: "credit-memo"){
+  user: User!
+  account: Account!
+  creditMemos(
+    filter: CreditMemoFilter,
+    orderBy: [CreditMemoOrderBy]
+    first: Int ,
+    after: String,
+    last: Int,
+    before: String): CreditMemoAccountMembershipConnection!
+}
+
+#---------- types ----------------
+
+input CreditMemoFilter @public(name: "credit-memo"){
+  creditMemoDate: [String]
+  creditMemoStatus: String
+  filterAccountId: String
+  filterUserId: String
+  locale: String
+  searchText: String
+  tenant: String
+  scope: String
+  accountUuid: String
+  userUuid: String
+}
+
+input CreditMemoOrderBy @public(name: "credit-memo"){
+  field: CreditMemoOrderField
+  direction: OrderDirection
+}
+
+enum CreditMemoOrderField @public(name: "credit-memo"){
+  CREDIT_MEMO_NUMBER,
+  CREATION_DATE,
+  APPLIED_DATE,
+  TOTAL,
+  STATUS,
+  AMOUNT_AVAILABLE,
+  AMOUNT_USED
+}
+
+type CreditMemoConnection @public(name: "credit-memo"){
+  totalCount: Int!
+  pageInfo: PageInfo!
+  nodes: [CreditMemo!]
+}
+
+type CreditMemoAccountConnection @public(name: "credit-memo"){
+  totalCount: Int!
+  pageInfo: PageInfo!
+  nodes: [CreditMemo!]
+}
+
+type CreditMemoAccountMembershipConnection @public(name: "credit-memo"){
+  totalCount: Int!
+  pageInfo: PageInfo!
+  nodes: [CreditMemo!]
+}
+
+type CreditMemo @public(name: "credit-memo"){
+  id: ID!
+  amountAvailable: Decimal!
+  amountUsed: Decimal
+  creditMemoAppliedDate: DateTime
+  creditMemoCreationDate: DateTime!
+  creditMemoLines: [CreditMemoLine!]
+  creditMemoNumber: Int!
+  currency: Currency!
+  initialStatus: CreditMemoStatus
+  tenant: String!
+  status: CreditMemoStatus!
+  subTotal: Decimal
+  taxDetails: [CreditMemoTaxDetail]
+  total: Decimal
+  billingRelationshipOwnerInvoiceNumber: String
+  creditMemoDueDate: String
+  totalTax: Decimal
+  seller: CreditMemoSeller
+  customer: CreditMemoParty
+}
+
+enum CreditMemoStatus @public(name: "credit-memo"){
+  REFUNDED
+  PARTIALLY_REFUNDED
+  UNAPPLIED
+  APPLIED
+  PARTIALLY_APPLIED
+  VOIDED
+}
+
+type CreditMemoLine @public(name: "credit-memo"){
+  id: ID!
+  buyer: CreditMemoParty
+  cost: CreditMemoCostInfo
+  costPeriod: CreditMemoCostPeriodInfo
+  description: String
+  discount: CreditMemoDiscountInfo
+  edition: CreditMemoEditionInfo
+  orderLineId: String
+  period: CreditMemoPeriod
+  pricingPlan: CreditMemoPricingPlanInfo
+  product: CreditMemoProductInfo
+  provider: CreditMemoParty
+  quantity: Decimal!
+  subscription: CreditMemoSubscription
+  total: Decimal!
+  type: CreditMemoLineType
+  unitPrice: Decimal!
+}
+
+enum CreditMemoLineType @public(name: "credit-memo"){
+  ITEM
+  DISCOUNT
+  TAX
+  DELEGATED_INVOICE
+  TERMINATION_FEE
+}
+
+type CreditMemoCostPeriodInfo @public(name: "credit-memo"){
+  recorded: CreditMemoRecordedCostPeriod
+}
+
+type CreditMemoDiscountInfo @public(name: "credit-memo"){
+  recorded: CreditMemoRecordedDiscount
+}
+
+type CreditMemoEditionInfo @public(name: "credit-memo"){
+  current: CreditMemoEdition
+  recorded: CreditMemoRecordedEdition
+}
+
+type CreditMemoPricingPlanInfo @public(name: "credit-memo"){
+  current: PricingPlan
+  recorded: CreditMemoRecordedPricingPlan
+}
+
+type CreditMemoProductInfo @public(name: "credit-memo"){
+  current: Product
+  recorded: CreditMemoRecordedProduct
+}
+
+type CreditMemoSubscription @public(name: "credit-memo"){
+  current: SubscriptionDefinition
+}
+
+type CreditMemoTaxDetail @public(name: "credit-memo"){
+  taxAmount: Decimal
+  taxType: CreditMemoTaxType
+  taxableAmount: Decimal
+}
+
+type CreditMemoEdition @public(name: "credit-memo"){
+  id: ID!
+  version: String
+}
+
+type PricingPlan @key(fields: "id") @public(name: "credit-memo"){
+  id: ID!
+}
+
+type Product @key(fields: "id version") @public(name: "credit-memo"){
+  id: ID!
+  version: String!
+}
+
+type CreditMemoRecordedCostPeriod @public(name: "credit-memo"){
+  feeLabel: String
+  periodLabel: String
+  periodsLabel: String
+  unit: String
+  unitValue: Int
+}
+
+type CreditMemoRecordedDiscount @public(name: "credit-memo"){
+  code: String
+  description: String
+  type: String
+  unit: CreditMemoRecordedDiscountUnit
+  value: Decimal
+}
+
+type CreditMemoRecordedDiscountUnit @public(name: "credit-memo"){
+  maximum: Decimal
+  minimum: Decimal
+  unitName: String
+}
+
+type CreditMemoRecordedEdition @public(name: "credit-memo"){
+  name: String
+}
+
+type CreditMemoRecordedPricingPlan @public(name: "credit-memo"){
+  period: String
+}
+
+type CreditMemoRecordedProduct @public(name: "credit-memo"){
+  name: String
+}
+
+type SubscriptionDefinition @key(fields: "id") @public(name: "credit-memo"){
+  id: ID!
+}
+
+type CreditMemoPeriod @public(name: "credit-memo"){
+  end: Date
+  start: Date
+}
+
+type CreditMemoAccountInfo @public(name: "credit-memo"){
+  current: Account
+  recorded: CreditMemoRecordedAccount
+}
+
+type CreditMemoRecordedAccount @public(name: "credit-memo"){
+  name: String
+}
+
+type CreditMemoUserInfo @public(name: "credit-memo"){
+  current: User
+  recorded: CreditMemoRecordedUser
+}
+
+type User @key(fields: "id") @public(name: "credit-memo"){
+  id: ID!
+}
+
+type CreditMemoRecordedUser @public(name: "credit-memo"){
+  addresses: [CreditMemoRecordedAddressPair]
+  email: EmailAddress
+  firstName: String
+  lastName: String
+}
+
+type CreditMemoRecordedAddress @public(name: "credit-memo"){
+  city: String
+  country: String
+  postalCode: String
+  region: String
+  streetLine1: String
+  streetLine2: String
+}
+
+type CreditMemoCostType @public(name: "credit-memo"){
+  recorded: CreditMemoRecordedCostType
+}
+
+type CreditMemoCostUnit @public(name: "credit-memo"){
+  recorded: CreditMemoRecordedCostUnit
+}
+
+type CreditMemoRecordedCostType @public(name: "credit-memo"){
+  description: String
+  feeLabel: String
+  type: String
+}
+
+type CreditMemoRecordedCostUnit @public(name: "credit-memo"){
+  allowDecimals: Boolean
+  feeLabel: String
+  unitLabel: String
+  unitsLabel: String
+}
+
+type CreditMemoCostInfo @public(name: "credit-memo"){
+  credit: Boolean
+  percentage: Boolean
+  strategy: String
+  type: CreditMemoCostType
+  typeCategory: String
+  unit: CreditMemoCostUnit
+}
+
+type CreditMemoRecordedAddressPair @public(name: "credit-memo"){
+  address: CreditMemoRecordedAddress
+  type: String
+}
+
+type CreditMemoParty @public(name: "credit-memo"){
+  account: CreditMemoAccountInfo
+  user: CreditMemoUserInfo
+}
+
+type CreditMemoSeller @public(name: "credit-memo"){
+  invoiceLogoUrl: String
+  invoiceMemo: String
+  invoiceText: String
+  merchantOfRecord: CreditMemoMerchantOfRecord
+}
+
+type CreditMemoMarketplace @public(name: "credit-memo"){
+  name: String
+}
+
+type CreditMemoTaxType @public(name: "credit-memo"){
+  id: ID!
+  name: String
+  rate: Decimal
+  strategy: String
+}
+
+#---------- unions ----------------
+
+union CreditMemoMerchantOfRecord @public(name: "credit-memo") = CreditMemoParty | CreditMemoMarketplace

@@ -1,0 +1,27 @@
+{
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "globals": {
+    "page": true,
+    "browser": true,
+    "port": true,
+    "provider": true,
+    "jasmine": true,
+    "FONT_PATH": true,
+    "IS_DEVELOPMENT": true
+  },
+  "parser": "@babel/eslint-parser",
+  "extends": ["prettier"],
+  "plugins": ["react"],
+  "rules": {
+    "comma-dangle": "off",
+    "no-console": "off",
+    "no-alert": "off",
+    "no-debugger": "off",
+    "react/destructuring-assignment": 0,
+    "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
+    "import/no-named-as-default": 0
+  }
+}

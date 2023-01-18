@@ -1,0 +1,28 @@
+# dependencies
+node_modules
+
+# testing
+coverage
+pacts
+logs
+__tests__/reports
+.scannerwork
+__e2e__/cypress/fixtures/example.json
+__e2e__/cypress/screenshots
+__e2e__/cypress/videos
+?
+
+# artifacts
+build
+dist
+
+# IDEs
+.vscode
+.idea
+
+# misc
+.DS_Store
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
