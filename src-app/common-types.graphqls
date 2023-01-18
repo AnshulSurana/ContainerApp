@@ -1,0 +1,35 @@
+scalar Decimal
+scalar EmailAddress
+scalar DateTime
+scalar Date
+scalar Currency
+
+#Common directives
+"The @internal directive annotates GraphQL objects that should be available internally"
+directive @internal repeatable on SCALAR | OBJECT | FIELD_DEFINITION | ARGUMENT_DEFINITION | INTERFACE | UNION | ENUM | ENUM_VALUE | INPUT_OBJECT | INPUT_FIELD_DEFINITION
+
+"The @public directive annotates GraphQL objects that should be available publicly"
+directive @public(name: String!) repeatable on SCALAR | OBJECT | FIELD_DEFINITION | ARGUMENT_DEFINITION | INTERFACE | UNION | ENUM | ENUM_VALUE | INPUT_OBJECT | INPUT_FIELD_DEFINITION
+
+"The @authorization directive declares the permissions required to call a GraphQL API"
+directive @authorization(scopes: [String!]!) on OBJECT | FIELD_DEFINITION | INTERFACE | ENUM | INPUT_OBJECT | INPUT_FIELD_DEFINITION | UNION
+
+"The @example directive will make any field that's annotated with it appear in the generated documentation"
+directive @example on SCALAR | OBJECT | FIELD_DEFINITION | ARGUMENT_DEFINITION | INTERFACE | UNION | ENUM | ENUM_VALUE | INPUT_OBJECT | INPUT_FIELD_DEFINITION
+
+type PageInfo @public(name: "common") {
+    "startCursor is an opaque cursor representing the first returned item"
+    startCursor: String
+    "endCursor is an opaque cursor representing the last returned item"
+    endCursor: String
+    "hasPreviousPage indicates if the connection has items before the startCursor"
+    hasPreviousPage: Boolean!
+    "hasNextPage indicates if the connection has items after the endCursor"
+    hasNextPage: Boolean!
+}
+
+"OrderDirection defines possible sort orders"
+enum OrderDirection @public(name: "common") {
+    ASC
+    DESC
+}

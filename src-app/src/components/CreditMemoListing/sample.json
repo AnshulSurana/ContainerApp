@@ -1,0 +1,215 @@
+{
+  "data": {
+    "creditMemos": {
+      "totalCount": 1,
+      "pageInfo": {
+        "startCursor": "MA==",
+        "endCursor": "MA==",
+        "hasPreviousPage": false,
+        "hasNextPage": false
+      },
+      "nodes": [
+        {
+          "id": "639047cad4f0572762a71b0c",
+          "amountAvailable": "366.67",
+          "amountUsed": "0",
+          "creditMemoAppliedDate": null,
+          "creditMemoCreationDate": "2022-12-07T00:00:00.000Z",
+          "creditMemoNumber": 652,
+          "currency": "USD",
+          "initialStatus": null,
+          "tenant": "CREDITMEMODOCBUILDER",
+          "status": "UNAPPLIED",
+          "subTotal": "366.67",
+          "taxDetails": [
+            {
+              "taxAmount": "0E-10",
+              "taxType": {
+                "id": "1",
+                "name": "Flat Tax",
+                "rate": "0E-10",
+                "strategy": "FLAT"
+              },
+              "taxableAmount": "-73.3400000000"
+            }
+          ],
+          "total": "-73.34",
+          "totalTax": "0.00",
+          "seller": {
+            "invoiceLogoUrl": null,
+            "invoiceMemo": null,
+            "invoiceText": null,
+            "merchantOfRecord": {
+              "name": "CREDITMEMODOCBUILDER"
+            }
+          },
+          "customer": {
+            "account": {
+              "current": {
+                "id": "484106d7-cacb-48d7-91e8-8a48c4ac8516"
+              },
+              "recorded": {
+                "name": "CREDITMEMODOCBUILDER"
+              }
+            },
+            "user": {
+              "current": {
+                "id": "29d61d44-f3f5-4f42-a205-646fd20985bb"
+              },
+              "recorded": {
+                "email": "swapnil.nehare+mm@-place-.com",
+                "firstName": "Swapnil",
+                "lastName": "Nehare",
+                "addresses": [
+                  {
+                    "type": "BILLING",
+                    "address": {
+                      "city": "California",
+                      "country": "US",
+                      "postalCode": "416202",
+                      "region": "CA",
+                      "streetLine1": "Sample addess ",
+                      "streetLine2": null
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "creditMemoLines": [
+            {
+              "id": "1715",
+              "buyer": {
+                "account": {
+                  "current": {
+                    "id": "484106d7-cacb-48d7-91e8-8a48c4ac8516"
+                  },
+                  "recorded": {
+                    "name": "CREDITMEMODOCBUILDER"
+                  }
+                },
+                "user": {
+                  "current": {
+                    "id": "29d61d44-f3f5-4f42-a205-646fd20985bb"
+                  },
+                  "recorded": {
+                    "email": "swapnil.nehare+mm@-place-.com",
+                    "firstName": "Swapnil",
+                    "lastName": "Nehare",
+                    "addresses": [
+                      {
+                        "type": "BILLING",
+                        "address": {
+                          "city": "California",
+                          "country": "US",
+                          "postalCode": "416202",
+                          "region": "CA",
+                          "streetLine1": "Sample addess ",
+                          "streetLine2": null
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              "cost": {
+                "credit": true,
+                "percentage": false,
+                "strategy": null,
+                "type": {
+                  "recorded": {
+                    "description": null,
+                    "feeLabel": null,
+                    "type": "ONE_TIME_PER_UNIT"
+                  }
+                },
+                "typeCategory": "ONE_TIME",
+                "unit": {
+                  "recorded": {
+                    "allowDecimals": false,
+                    "feeLabel": "Per User Fee",
+                    "unitLabel": "User",
+                    "unitsLabel": "Users"
+                  }
+                }
+              },
+              "costPeriod": {
+                "recorded": {
+                  "feeLabel": "Monthly Fee",
+                  "periodLabel": "Month",
+                  "periodsLabel": "Months",
+                  "unit": "MONTHS",
+                  "unitValue": 1
+                }
+              },
+              "description": "Test Credit Memo - Standard - Per User Fee Period from 12/07/22 to 12/29/22",
+              "discount": null,
+              "edition": {
+                "current": {
+                  "id": "a59fabe7-e8ee-49a9-beb9-09d34b5670a0",
+                  "version": "PUBLISHED"
+                },
+                "recorded": {
+                  "name": "Standard"
+                }
+              },
+              "orderLineId": null,
+              "period": {
+                "end": "2022-12-29",
+                "start": "2022-12-07"
+              },
+              "pricingPlan": {
+                "current": {
+                  "id": "5035789c-8e47-485b-93b4-d06bc6c55837"
+                },
+                "recorded": {
+                  "period": "MONTHLY"
+                }
+              },
+              "product": {
+                "current": {
+                  "id": "0642d7ed-9f90-4505-bda6-9a82945f099c",
+                  "version": "PUBLISHED"
+                },
+                "recorded": {
+                  "name": "Test Credit Memo"
+                }
+              },
+              "provider": {
+                "account": {
+                  "current": {
+                    "id": "2e592c52-613b-4da0-b4fb-411c95637eb3"
+                  },
+                  "recorded": {
+                    "name": "developer  aravind"
+                  }
+                },
+                "user": null
+              },
+              "quantity": "50.0000000000",
+              "subscription": {
+                "current": {
+                  "id": "75909"
+                }
+              },
+              "total": "366.67",
+              "type": "ITEM",
+              "unitPrice": "10.0000000000"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "extensions": {
+    "cost": {
+      "estimatedQueryCost": 8,
+      "actualQueryCost": 50,
+      "throttleStatus": {
+        "maximumAvailable": 1000,
+        "currentlyAvailable": 950,
+        "restoreRate": "100/second"
+      }
+    }
+  }
+}
